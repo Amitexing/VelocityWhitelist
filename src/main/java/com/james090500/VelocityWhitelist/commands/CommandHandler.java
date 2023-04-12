@@ -23,9 +23,8 @@ public class CommandHandler {
      */
     public int about(CommandContext<CommandSource> commandSourceCommandContext) {
         CommandSource source = commandSourceCommandContext.getSource();
-        String status = Configs.getConfig().isEnabled() ? "&2&lON" : "&c&lOFF";
-        source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&a" + velocityWhitelist.PREFIX + "Whitelist is " + status));
-        source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&a" + velocityWhitelist.PREFIX + "VelocityWhitelist by james090500"));
+        String status = Configs.getConfig().isEnabled() ? "&2включен" : "&cвыключен";
+        source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&a" + velocityWhitelist.PREFIX + "Вайтлист " + status));
         return 1;
     }
 
@@ -37,11 +36,11 @@ public class CommandHandler {
     public int turnOn(CommandContext<CommandSource> commandSourceCommandContext) {
         CommandSource source = commandSourceCommandContext.getSource();
         if(Configs.getConfig().isEnabled()) {
-            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&c" + velocityWhitelist.PREFIX + "Whitelist is already turned on"));
+            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&c" + velocityWhitelist.PREFIX + "Вайтлист уже включен."));
         } else {
             Configs.getConfig().setEnabled(true);
             Configs.saveConfig(velocityWhitelist);
-            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&a" + velocityWhitelist.PREFIX + "Whitelist turned &2&lON"));
+            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&a" + velocityWhitelist.PREFIX + "Вайтлист &2включен."));
         }
         return 1;
     }
@@ -54,11 +53,11 @@ public class CommandHandler {
     public int turnOff(CommandContext<CommandSource> commandSourceCommandContext) {
         CommandSource source = commandSourceCommandContext.getSource();
         if(!Configs.getConfig().isEnabled()) {
-            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&c" + velocityWhitelist.PREFIX + "Whitelist is already turned off"));
+            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&c" + velocityWhitelist.PREFIX + "Вайтлист уже выключен."));
         } else {
             Configs.getConfig().setEnabled(false);
             Configs.saveConfig(velocityWhitelist);
-            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&a" + velocityWhitelist.PREFIX + "Whitelist turned &c&lOFF"));
+            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&a" + velocityWhitelist.PREFIX + "Вайтлист &cвыключен."));
         }
         return 1;
     }
@@ -73,7 +72,7 @@ public class CommandHandler {
         CommandSource source = commandSourceCommandContext.getSource();
         ParsedArgument<CommandSource, ?> username = commandSourceCommandContext.getArguments().get("username");
         if(username == null) {
-            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&c" + velocityWhitelist.PREFIX + "Syntax /vwhitelist add <username>"));
+            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&c" + velocityWhitelist.PREFIX + "Используйте /vwhitelist add <username>"));
             return 1;
         }
 
@@ -91,7 +90,7 @@ public class CommandHandler {
         CommandSource source = commandSourceCommandContext.getSource();
         ParsedArgument<CommandSource, ?> username = commandSourceCommandContext.getArguments().get("username");
         if(username == null) {
-            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&c" + velocityWhitelist.PREFIX + "Syntax /vwhitelist remove <username>"));
+            source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&c" + velocityWhitelist.PREFIX + "Используйте /vwhitelist remove <username>"));
             return 1;
         }
 
@@ -107,7 +106,7 @@ public class CommandHandler {
     public int reload(CommandContext<CommandSource> commandSourceCommandContext) {
         Configs.loadConfigs(velocityWhitelist);
         CommandSource source = commandSourceCommandContext.getSource();
-        source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&a" + velocityWhitelist.PREFIX + "Reloaded"));
+        source.sendMessage(LegacyComponentSerializer.legacyAmpersand().deserialize("&a" + velocityWhitelist.PREFIX + "Перезагружен"));
         return 1;
     }
 }
