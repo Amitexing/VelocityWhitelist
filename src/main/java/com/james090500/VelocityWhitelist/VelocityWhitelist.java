@@ -18,10 +18,10 @@ import org.slf4j.Logger;
 
 import java.nio.file.Path;
 
-@Plugin(id = "velocitywhitelist", name = "VelocityWhitelist", version = "1.0.2-SNAPSHOT", description = "A Proxy based whitelist", authors = { "james095000" })
+@Plugin(id = "velocitywhitelist", name = "AnicloudVelocityWhitelist", version = "1.0.2-SNAPSHOT", description = "A Proxy based whitelist", authors = { "james095000, amitexing" })
 public class VelocityWhitelist {
 
-    public final String PREFIX = "ꑠ ";
+    public final String PREFIX = "&fꑠ ";
     @Getter private final ProxyServer server;
     @Getter private final Logger logger;
     @Getter private final Path dataDirectory;
